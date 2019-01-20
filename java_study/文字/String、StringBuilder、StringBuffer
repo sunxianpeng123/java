@@ -1,0 +1,15 @@
+ 1、StringBuilder与StringBuffer
+ * StringBuilder是非线程安全的，StringBuffer是
+ * 线程安全的。我们应该首选（优先使用）StringBuilder。
+ *
+ * String是非可变类，StringBuilder是可变类，对StringBuilder
+ * 进行的一切修改操作，都是在原有对象上进行的，而没有创建新的
+ * 对象。
+
+2、 String与StringBuilder
+ * String是非可变类，String对象一经创建就不能再进行修改。
+ * StringBuilder可变类，StringBuilder的对象可以改变。
+ * 因为String对象是不可改变的，所以String对象可以在多线程
+ * 并发访问时，安全的实现共享。但是，当我们频繁对String进行
+ * 修改时，就会创建大量的临时对象，影响性能。此时，我们应该
+ * 使用StringBuilder来代替String。

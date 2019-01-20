@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class ScannerTest {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        // 手动设置分隔符。
+        // s.useDelimiter("*");
+        while (s.hasNext()) {
+            String str = s.next();
+            // 判断是否含有下一行
+            // s.hasNextLine();
+            // 获取下一行。
+            // s.nextLine();
+            // s.nextInt();
+            if (str.equals("q")) {
+                break;
+            }
+            System.out.println(str);
+        }
+        // 释放本地的资源。
+        s.close();
+    }
+
+}
