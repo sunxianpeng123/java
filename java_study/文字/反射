@@ -1,0 +1,44 @@
+1、反射机制
+
+在Java中，反射指的是在运行时动态的获取一个类的信息，创 建该类的对象，或者访问该对象的成员（成员变量，方法等）。
+
+2、运行的过程
+当我们通过java命令来运行某个类时，会经历如下的过程：
+ 类的加载 由类加载器将指定的class文件载入。载入仅执行一 次。类加载后，就会创建一个对应类的Class类的实例。
+ 链接 链接可以分为验证，准备，与解析。验证用于验证之前 所加载class文件结构上是否符合规范。准备阶段则准备为类 结构分配相应的空间。解析则是把class文件中的符号引用替 换为真实的实际引用。
+ 初始化 为类的静态成员进行相应的初始化赋值。（声明时初 始化与使用静态初始化块初始化）。
+
+3、时间点
+ 以上只是基本的过程说明。但是， Java虚拟机规范（ JVMS） 没有规定具体的执行时刻，例如，对于初始化而言，可以在 链接之后立即初始化，也可以直到使用类的相关成员时才进 行初始化。
+ 无论如何， JVMS都要求，在第一次使用类的静态成员时，该 成员一定是初始化完成的。也就是说，类的静态成员一定会 在第一次使用前得到初始化。
+
+4、ClassLoader类加载器
+Java使用ClassLoader（子类）来实现类的加载。 ClassLoader  调用loadClass方法来加载参数指定的类型。该方法会返回一个 指定类型的Class对象。
+程序：通过ClassLoader获取系统类加载器。
+
+5、Class
+每个类在加载后都会由系统创建一个Class对象， Class对象存放 类的相关信息，如方法，变量，构造器等。
+通过Class类的静态方法forName方法可以获取指定类型的Class 对象。这与ClassLoader类的loadClass方法类似。不同的是， forName默认是初始化类的。
+说明：加载类不代表会初始化类。
+
+6、获取Class对象
+可以通过以下方式获取Class对象：
+ 通过ClassLoader对象的loadClass方法。 (Class<?>)
+ 通过Class类的静态方法forName方法。 (Class<?>)
+ 通过类名.class获取。 (Class<T>)
+ 通过对象.getClass方法获取。 (Class<? extends T>)
+
+7、创建对象
+可以通过Class对象的newInstance方法来创建对象。（类似于 调用无参的构造器）。
+如果要创建含有参数的构造器，需要通过Class对象的 getConstructor（只能获取public权限）或 getDeclaredConstructor来获取相应的构造器对象
+（ Constructor），然后通过构造器的newInstance方法创建对 象。
+说明：可以调用Constructor对象的setAccessible方法设置访问 权限。
+
+8、调用方法
+通过Class对象的getMethod或getDeclaredMethod获取相关的 方法对象Method，然后通过Method对象的invoke方法调用。
+9、访问成员变量
+通过Class对象的getField或getDeclaredField方法获取相关的成 员变量Field对象（域对象），然后通过Field对象的set与get方 法设置与获取变量的值。
+说明： set与get配有相关的setXXX与getXXX， XXX为类型，可以 简化操作。
+
+10、安全管理器
+ 我们可以设置安全管理器， 进而限制对私有成员的访问。

@@ -28,7 +28,7 @@ public class GenericInherit {
         // String是Object的子类型，因此，String[]
         // 也是Object[]的子类型。
         String[] s = new String[5];
-        Object[] o = s;
+        Object[] o = s;//如果A是B的子类型，则A[]也是B[]子类型。
         // o[0] = new Integer(5);
         // 错误，在编译时没有问题，但是，在运行时会产生
         // ArrayStoreException异常。
@@ -37,7 +37,7 @@ public class GenericInherit {
         List<String> list = new ArrayList<>();
         List<Object> list2 = new ArrayList<>();
         // 错误，参数化类型不具有可继承性
-        // list2 = list;
+        // list2 = list;//如果A是B的子类型，则T<A>不是T<B>的子类型。
         // list2.add(new Object());
         // list2.add(new Integer(5));
 
