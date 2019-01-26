@@ -13,6 +13,16 @@ public class RunnableTest {
     /*
  * 通过实现Runnable接口实现多线程
  */
+
+    /*
+    4、线程的生命周期
+     线程的生命周期可以分为以下环节：
+      新建-创建对象
+      就绪-调用start后
+      运行-获得CPU资源
+      阻塞（挂起） -失去CPU资源
+      死亡-线程执行结束或抛出未捕获的异常
+*/
     public static void main(String[] args) {
         Mission m = new Mission();
         // 使用实现Runnable接口的对象，作为
@@ -42,6 +52,7 @@ class Mission implements Runnable {
         // getName();
         // 获取当前的执行的线程。
 
-
+        Thread current = Thread.currentThread();
+        current.getName();
     }
 }
