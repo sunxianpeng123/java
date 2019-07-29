@@ -30,7 +30,7 @@ class ExtendsThread2 extends  Thread{
     }
     @Override
     public void run() {
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 3; i++) {
             System.out.println("ExtendsThread子线程中的逻辑:::  "+ i);
             // 令当前线程休眠参数指定的时间（毫秒）
             // 处于休眠的线程会放弃掉当前的时间片，
