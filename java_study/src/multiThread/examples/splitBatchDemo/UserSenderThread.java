@@ -14,7 +14,6 @@ public class UserSenderThread implements Runnable {
     public void run() {
         for (UserEntity userEntity:listUser) {
             System.out.println("线程名称"+Thread.currentThread().getName()+",,,"+userEntity.toString());
-
         }
     }
 }
